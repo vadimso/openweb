@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: todo2-ingress
+spec:
+  rules:
+    - host: tools.devops-openweb.com
+      http:
+        paths:
+          - path: /todo
+            pathType: Prefix
+            backend:
+              service:
+                name: todo2-service
+                port:
+                  number: 80
