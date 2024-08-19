@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: todo2
+  template:
+    metadata:
+      labels:
+        app: todo2
+    spec:
+      containers:
+        - name: todo2
+          image: your-dockerhub-username/todo2:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: DATABASE_URL
+              value: mysql://user:password@mysql/todo2
